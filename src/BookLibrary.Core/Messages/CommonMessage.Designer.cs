@@ -70,6 +70,15 @@ namespace BookLibrary.Core.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The book {0} is already added..
+        /// </summary>
+        public static string BOOK_ALREADY_ADDED {
+            get {
+                return ResourceManager.GetString("BOOK_ALREADY_ADDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Publisher with id {0} not found..
         /// </summary>
         public static string PUBLISHER_NOT_FOUND {

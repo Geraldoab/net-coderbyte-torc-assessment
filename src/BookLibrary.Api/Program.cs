@@ -7,6 +7,7 @@ using BookLibrary.Infrastructure;
 using BookLibrary.Infrastructure.Repositories;
 using BookLibrary.Application.Interfaces;
 using BookLibrary.Application;
+using BookLibrary.Application.Interfaces.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddControllers(options => options.Filters.Add(typeof(ErrorResul
 
 builder.Services.AddDbContext<BookLibraryDbContext>(options => options.UseInMemoryDatabase("BookLibrary"));
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBookNotification, BookNotification>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(IService<>), typeof(BaseService<>));
 

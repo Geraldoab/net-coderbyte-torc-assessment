@@ -1,4 +1,5 @@
 ﻿using BookLibrary.Application.Interfaces;
+using BookLibrary.Application.Interfaces.Events;
 using BookLibrary.Core;
 using BookLibrary.Core.Entities;
 using BookLibrary.Core.Enums;
@@ -11,16 +12,23 @@ namespace BookLibrary.Application
 {
     public class BookService : BaseService<Book>, IBookService
     {
+        protected delegate void BookAdded(Book book);
+        protected event BookAdded? BookAddedNotification;
+
         private readonly IRepository<Book> _repository;
         private readonly IRepository<Author> _authorRepository;
         private readonly IRepository<Publisher> _publisherRepository;
+        private readonly IBookNotification _bookNotification;
 
-        public BookService(IRepository<Book> repository, IRepository<Author> authorRepository, 
-            IRepository<Publisher> publisherRepository) : base(repository)
+        public BookService(IRepository<Book> repository, IRepository<Author> authorRepository,
+            IRepository<Publisher> publisherRepository, IBookNotification bookNotification) : base(repository)
         {
             _repository = repository;
             _authorRepository = authorRepository;
             _publisherRepository = publisherRepository;
+            _bookNotification = bookNotification;
+
+            BookAddedNotification += _bookNotification.OnBookAdded;
         }
 
         public async Task<OperationResult<IReadOnlyList<Book>>> GetAllAsync(SearchByEnum searchBy, string? searchValue, CancellationToken cancellationToken)
@@ -65,6 +73,9 @@ namespace BookLibrary.Application
 
         public async Task<OperationResult<Book>> AddAsync(Book newBook, CancellationToken cancellationToken)
         {
+            if((await _repository.FindAsync(w=> w.Title == newBook.Title, cancellationToken)) is not null)
+                return OperationResult<Book>.Error(ErrorCode.BadRequest, string.Format(CommonMessage.BOOK_ALREADY_ADDED, newBook.Title));
+
             if (newBook.AuthorId <= 0 || (await _authorRepository.GetByIdAsync(newBook.AuthorId)) == null)
                 return OperationResult<Book>.NotFound(string.Format(CommonMessage.AUTHOR_NOT_FOUND, newBook.AuthorId));
 
@@ -75,6 +86,8 @@ namespace BookLibrary.Application
 
             var addedBook = await _repository.AddAsync(newBook, cancellationToken);
             await _repository.SaveChangesAsync(cancellationToken);
+
+            BookAddedNotification?.Invoke(addedBook);
 
             return OperationResult<Book>.Success(addedBook);
         }

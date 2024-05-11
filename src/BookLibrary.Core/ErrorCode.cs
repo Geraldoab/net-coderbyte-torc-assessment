@@ -3,6 +3,7 @@
     public enum ErrorCode
     {
         InternalError,
-        NotFound
+        NotFound,
+        BadRequest
     }
 }

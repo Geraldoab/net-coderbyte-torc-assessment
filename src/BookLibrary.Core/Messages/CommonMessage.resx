@@ -120,6 +120,9 @@
   <data name="AUTHOR_NOT_FOUND" xml:space="preserve">
     <value>Author with id {0} not found.</value>
   </data>
+  <data name="BOOK_ALREADY_ADDED" xml:space="preserve">
+    <value>The book {0} is already added.</value>
+  </data>
   <data name="PUBLISHER_NOT_FOUND" xml:space="preserve">
     <value>Publisher with id {0} not found.</value>
   </data>
