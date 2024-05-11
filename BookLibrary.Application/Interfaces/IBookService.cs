@@ -6,6 +6,7 @@ namespace BookLibrary.Application.Interfaces
 {
     public interface IBookService
     {
-        Task<OperationResult<IReadOnlyList<Book>>> GetAllQueryableFilter(SearchByEnum searchBy, string? searchValue);
+        Task<OperationResult<IReadOnlyList<Book>>> GetAllAsync(SearchByEnum searchBy, string? searchValue, CancellationToken cancellationToken);
+        Task<OperationResult<Book>> AddAsync(Book newBook, CancellationToken cancellationToken);
     }
 }

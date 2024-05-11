@@ -34,6 +34,11 @@ public class AuthorConfiguration : IEntityTypeConfiguration<Author>
                 Id = 3,
                 Name = "Pam Muñoz Ryan"
             },
+            new Author
+            {
+                Id = 4,
+                Name = "Yuval Noah Harari"
+            },
         });
     }
 }
