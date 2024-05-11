@@ -23,6 +23,11 @@ public class BaseRepository<TEntity>(BookLibraryDbContext context)
         return await context.Set<TEntity>().AsNoTracking().Where(predicate).ToListAsync();
     }
 
+    public async Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
+    {
+        return await context.Set<TEntity>().AsNoTracking().Where(predicate).FirstOrDefaultAsync(cancellationToken);
+    }
+
     public IQueryable<TEntity> GetQueryable()
     {
         return context.Set<TEntity>().AsQueryable();

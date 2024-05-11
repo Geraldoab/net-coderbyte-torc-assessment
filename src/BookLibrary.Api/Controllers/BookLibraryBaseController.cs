@@ -12,17 +12,22 @@ public class BookLibraryBaseController(IMapper mapper) : ControllerBase
     {
         if (!result.Succeeded)
         {
-            return new ErrorResponseActionResult
+            if (result.ErrorResult.Code == ErrorCode.BadRequest)
+                return BadRequest(result.ErrorResult.Message);
+            else
             {
-                Result = new ErrorResponse
+                return new ErrorResponseActionResult
                 {
-                    Error = new Error
+                    Result = new ErrorResponse
                     {
-                        Code = result.ErrorResult.Code,
-                        Message = result.ErrorResult.Message
+                        Error = new Error
+                        {
+                            Code = result.ErrorResult.Code,
+                            Message = result.ErrorResult.Message
+                        }
                     }
-                }
-            };
+                };
+            }
         }
 
         return Ok(mapper.Map<TResult, TDataTransferObject>(result));

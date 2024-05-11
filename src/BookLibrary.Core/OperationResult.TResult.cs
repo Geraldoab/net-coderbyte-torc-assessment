@@ -21,6 +21,12 @@ public class OperationResult<TResult> : OperationResult
 
     public TResult Result { get; protected set; }
 
+    public static OperationResult<TResult> Error(ErrorCode errorCode, params string[] errorMessages) => new OperationResult<TResult>(new Error
+    {
+        Code = errorCode,
+        Message = string.Join(Environment.NewLine, errorMessages)
+    });
+
     public static OperationResult<TResult> Error(params string[] errorMessages) => new OperationResult<TResult>(new Error
     {
         Code = ErrorCode.InternalError,

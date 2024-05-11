@@ -15,6 +15,8 @@ public interface IRepository<TEntity>
 
     Task<IReadOnlyList<TEntity>> FilterAsync(Expression<Func<TEntity, bool>> predicate);
 
+    Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
+
     IQueryable<TEntity> GetQueryable();
 
     DbSet<TEntity> GetEntity();
