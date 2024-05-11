@@ -1,6 +1,7 @@
 ﻿using BookLibrary.Application.Interfaces;
 using BookLibrary.Core;
 using BookLibrary.Core.Entities;
+using BookLibrary.Core.Enums;
 using BookLibrary.Core.Interfaces;
 using BookLibrary.Core.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ namespace BookLibrary.Application
             _repository = repository;
         }
 
-        public async Task<OperationResult<IReadOnlyList<Book>>> GetAllQueryableFilter()
+        public async Task<OperationResult<IReadOnlyList<Book>>> GetAllQueryableFilter(SearchByEnum searchBy, string? searchValue)
         {
             /* 
              * We need be careful with eager loading of related data. It can be improved also using Dapper.
@@ -24,10 +25,21 @@ namespace BookLibrary.Application
              * We can also add a cache layer with Redis or another database in this case I'll add local cache by
              * using [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 60)]
              */
-            var books = await _repository.GetEntity()
-                .Include(a=> a.Author)
-                .Include(P => P.Publisher)
-                .Select(s => new Book
+            var bookEntity = _repository.GetEntity();
+
+            IQueryable<Book> bookQueryable = bookEntity.AsQueryable();
+
+            if(!string.IsNullOrEmpty(searchValue))
+            {
+                if (searchBy == SearchByEnum.Category)
+                    bookQueryable = bookQueryable.Where(w => w.Category == searchValue);
+                else if(searchBy == SearchByEnum.Type)
+                    bookQueryable = bookQueryable.Where(w => w.Type == searchValue);
+                else if (searchBy == SearchByEnum.BookTitle)
+                    bookQueryable = bookQueryable.Where(w => w.Title.Contains(searchValue));
+            }
+
+            var books = await bookQueryable.Select(s => new Book
                 {
                     ISBN = s.ISBN,
                     Category = s.Category,
