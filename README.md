@@ -12,8 +12,8 @@
 - :white_check_mark: Clean Code
 
 ## Extra
+- :white_check_mark: A Book notification using ```Delegate and Event```
 - :white_check_mark: Add Books POST ``` /Books ```
-- :white_check_mark: A Book notification using ```Delegate and Event```  
 ```
 {
   "title": "Sapiens: A Brief History of Humankind",
@@ -27,7 +27,6 @@
   "totalCopies": 300,
   "copiesInUse": 0
 }
-
 ```
 ## Sample
 
