@@ -1,10 +1,13 @@
 # net-coderbyte-torc-assessment
-My Description
+Royal Library API
 
 ## Technologies/Tools
 
-- :white_check_mark: Item 1
-- :white_check_mark: Item 2
-- :white_check_mark: Item 3
-- :white_check_mark: Item 4
+- :white_check_mark: C#
+- :white_check_mark: .NET 8.0
+- :white_check_mark: Local cache
+- :white_check_mark: Entity Framework Core
+- :white_check_mark: In-memory database
+- :white_check_mark: Unity Tests with XUnit
+- :white_check_mark: Clean Code
 
