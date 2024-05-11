@@ -2,13 +2,24 @@
 
 namespace BookLibrary.Api.Models;
 
-public class BookDataTransferObject
+public class BookSearchDataTransferObject
 {
-    public string BookTitle { get; set; }
-    public string Publisher { get; set; }
-    public string Authors { get; set; }
-    public string Type { get; set; }
-    public string ISBN { get; set; }
-    public string Category { get; set; }
-    public string AvailableCopies { get; set; }
+    public string? BookTitle { get; set; }
+    public string? Publisher { get; set; }
+    public string? Authors { get; set; }
+    public string? Type { get; set; }
+    public string? ISBN { get; set; }
+    public string? Category { get; set; }
+    public string? AvailableCopies { get; set; }
 }
+
+public record BookDataTransferObject(
+    [Required] string Title,
+    [Required] string FirstName,
+    [Required] string LastName,
+    [Required] string Type,
+    [Required] string ISBN,
+    [Required] string Category,
+    [Required] int AuthorId,
+    [Required] int PublisherId,
+    int TotalCopies = 0);

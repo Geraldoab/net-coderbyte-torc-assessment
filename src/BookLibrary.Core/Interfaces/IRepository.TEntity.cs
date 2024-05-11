@@ -19,5 +19,9 @@ public interface IRepository<TEntity>
 
     DbSet<TEntity> GetEntity();
 
+    Task<TEntity> GetByIdAsync(params object[] keyValues);
+
+    Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken);
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

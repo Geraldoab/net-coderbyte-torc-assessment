@@ -38,5 +38,16 @@ public class BaseRepository<TEntity>(BookLibraryDbContext context)
         return context.Set<TEntity>().AsQueryable();
     }
 
+    public async Task<TEntity> GetByIdAsync(params object[] keyValues)
+    {
+        return await context.Set<TEntity>().FindAsync(keyValues);
+    }
+
+    public async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
+    {
+        await context.Set<TEntity>().AddAsync(entity, cancellationToken);
+        return entity;
+    }
+
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken) => await context.SaveChangesAsync(cancellationToken);
 }

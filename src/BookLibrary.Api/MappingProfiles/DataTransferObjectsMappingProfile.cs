@@ -8,7 +8,7 @@ public class DataTransferObjectsMappingProfile : Profile
 {
     public DataTransferObjectsMappingProfile()
     {
-        CreateMap<Book, BookDataTransferObject>()
+        CreateMap<Book, BookSearchDataTransferObject>()
             .ForMember(p => p.BookTitle, m => m.MapFrom(s => s.Title))
             .ForMember(p => p.Publisher, m => m.MapFrom(s => s.Publisher.Name))
             .ForMember(p => p.Authors, m => m.MapFrom(s => s.Author.Name))
@@ -16,5 +16,7 @@ public class DataTransferObjectsMappingProfile : Profile
             .ForMember(p => p.ISBN, m => m.MapFrom(s => s.ISBN))
             .ForMember(p => p.Category, m => m.MapFrom(s => s.Category))
             .ForMember(p => p.AvailableCopies, m => m.MapFrom(s => $"{s.CopiesInUse}/{s.TotalCopies}"));
+
+        CreateMap<Book, BookDataTransferObject>().ReverseMap();
     }
 }
