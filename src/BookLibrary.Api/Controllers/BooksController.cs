@@ -3,6 +3,7 @@ using BookLibrary.Api.Models;
 using BookLibrary.Api.Utils;
 using BookLibrary.Application.Interfaces;
 using BookLibrary.Core.Entities;
+using BookLibrary.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibrary.Api.Controllers;
@@ -21,9 +22,9 @@ public class BooksController(IBookService bookService,
     [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 60)]
     [ProducesResponseType(typeof(IEnumerable<BookDataTransferObject>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorResponseActionResult))]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll(SearchByEnum searchBy, string? searchValue)
     {
-        var books = await bookService.GetAllQueryableFilter();
+        var books = await bookService.GetAllQueryableFilter(searchBy, searchValue);
         return MapResultToDataTransferObject<IReadOnlyList<Book>, IReadOnlyList<BookDataTransferObject>>(books);
     }
 }

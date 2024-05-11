@@ -2,6 +2,7 @@ using AutoMapper;
 using BookLibrary.Api.MappingProfiles;
 using BookLibrary.Application;
 using BookLibrary.Core.Entities;
+using BookLibrary.Core.Enums;
 using BookLibrary.Core.Interfaces;
 using FluentAssertions;
 using Moq;
@@ -31,7 +32,7 @@ namespace BookLibrary.Test
             _bookService = new BookService(_mockRepository.Object);
 
             //Act
-            var bookList = await _bookService.GetAllQueryableFilter();
+            var bookList = await _bookService.GetAllQueryableFilter(SearchByEnum.All, null);
 
             //Assert
             bookList.Should().NotBeNull();
