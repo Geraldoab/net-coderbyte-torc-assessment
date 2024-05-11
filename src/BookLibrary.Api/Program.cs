@@ -5,6 +5,8 @@ using BookLibrary.Core.Interfaces;
 using BookLibrary.Core.Services;
 using BookLibrary.Infrastructure;
 using BookLibrary.Infrastructure.Repositories;
+using BookLibrary.Application.Interfaces;
+using BookLibrary.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,8 +25,10 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddControllers(options => options.Filters.Add(typeof(ErrorResultFilter)));
 
 builder.Services.AddDbContext<BookLibraryDbContext>(options => options.UseInMemoryDatabase("BookLibrary"));
+builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(IService<>), typeof(BaseService<>));
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();

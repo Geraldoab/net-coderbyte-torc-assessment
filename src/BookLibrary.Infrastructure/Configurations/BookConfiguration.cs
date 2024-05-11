@@ -40,6 +40,14 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
         builder.Property(f => f.Category)
             .HasMaxLength(50);
 
+        builder.HasOne(e=> e.Author)
+            .WithMany(e => e.Books)
+            .HasForeignKey(e => e.AuthorId);
+
+        builder.HasOne(e => e.Publisher)
+            .WithMany(e => e.Books)
+            .HasForeignKey(e => e.PublisherId);
+
         builder.HasData(new List<Book>
         {
             new Book
@@ -52,7 +60,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 80,
                 Type = "Hardcover",
                 ISBN = "1234567891",
-                Category = "Fiction"
+                Category = "Fiction",
+                AuthorId = 1,
+                PublisherId = 1,
+                /*Author = new Author()
+                {
+                    Id = 1,
+                    Name = "Dan Heath, Chip, Heath"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 1,
+                    ame = "New York Times"
+                }*/
             },
             new Book
             {
@@ -64,7 +84,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 65,
                 Type = "Paperback",
                 ISBN = "1234567892",
-                Category = "Fiction"
+                Category = "Fiction",
+                AuthorId = 2,
+                PublisherId = 2,
+                /*Author = new Author()
+                {
+                    Id = 2,
+                    Name = "James Frey"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 2,
+                    Name = "Imon & Schuster Inc"
+                }*/
             },
             new Book
             {
@@ -76,7 +108,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 45,
                 Type = "Hardcover",
                 ISBN = "1234567893",
-                Category = "Fiction"
+                Category = "Fiction",
+                AuthorId = 3,
+                PublisherId = 3,
+                /*Author = new Author()
+                {
+                    Id = 3,
+                    Name = "Pam Muñoz Rya"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 3,
+                    Name = "Scholastic Inc"
+                }*/
             },
             new Book
             {
@@ -88,7 +132,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 20,
                 Type = "Hardcover",
                 ISBN = "1234567894",
-                Category = "Non-Fiction"
+                Category = "Non-Fiction",
+                AuthorId = 3,
+                PublisherId = 3,
+                /*Author = new Author()
+                {
+                    Id = 3,
+                    Name = "Pam Muñoz Rya"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 3,
+                    Name = "Scholastic Inc"
+                }*/
             },
             new Book
             {
@@ -100,7 +156,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 35,
                 Type = "Hardcover",
                 ISBN = "1234567895",
-                Category = "Biography"
+                Category = "Biography",
+                AuthorId = 2,
+                PublisherId = 2,
+                /*Author = new Author()
+                {
+                    Id = 2,
+                    Name = "James Frey"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 2,
+                    Name = "Imon & Schuster Inc"
+                }*/
             },
             new Book
             {
@@ -112,7 +180,20 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 11,
                 Type = "Hardcover",
                 ISBN = "1234567896",
-                Category = "Mystery"
+                Category = "Mystery",
+                AuthorId = 3,
+                PublisherId = 3,
+
+                /*Author = new Author()
+                {
+                    Id = 3,
+                    Name = "Pam Muñoz Rya"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 3,
+                    Name = "Scholastic Inc"
+                }*/
             },
             new Book
             {
@@ -124,7 +205,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 14,
                 Type = "Paperback",
                 ISBN = "1234567897",
-                Category = "Sci-Fi"
+                Category = "Sci-Fi",
+                AuthorId = 1,
+                PublisherId = 1,
+                /*Author = new Author()
+                {
+                    Id = 1,
+                    Name = "Dan Heath, Chip, Heath"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 1,
+                    Name = "New York Times"
+                }*/
             },
             new Book
             {
@@ -136,7 +229,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 40,
                 Type = "Paperback",
                 ISBN = "1234567898",
-                Category = "Sci-Fi"
+                Category = "Sci-Fi",
+                AuthorId = 2,
+                PublisherId = 2,
+                /*Author = new Author()
+                {
+                    Id = 2,
+                    Name = "James Frey"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 2,
+                    Name = "Imon & Schuster Inc"
+                }*/
             },
             new Book
             {
@@ -148,7 +253,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 35,
                 Type = "Hardcover",
                 ISBN = "1234567899",
-                Category = "Fiction"
+                Category = "Fiction",
+                AuthorId = 2,
+                PublisherId = 2,
+                /*Author = new Author()
+                {
+                    Id = 2,
+                    Name = "James Frey"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 2,
+                    Name = "Imon & Schuster Inc"
+                }*/
             },
             new Book
             {
@@ -160,7 +277,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 35,
                 Type = "Paperback",
                 ISBN = "1234567900",
-                Category = "Non-Fiction"
+                Category = "Non-Fiction",
+                AuthorId = 1,
+                PublisherId = 1,
+                /*Author = new Author()
+                {
+                    Id = 1,
+                    Name = "Dan Heath, Chip, Heath"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 1,
+                    Name = "New York Times"
+                }*/
             },
             new Book
             {
@@ -172,7 +301,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 8,
                 Type = "Hardcover",
                 ISBN = "8901234567",
-                Category = "Fiction"
+                Category = "Fiction",
+                AuthorId = 2,
+                PublisherId = 2,
+                /*Author = new Author()
+                {
+                    Id = 2,
+                    Name = "James Frey"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 2,
+                    Name = "Imon & Schuster Inc"
+                }*/
             },
             new Book
             {
@@ -184,7 +325,19 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 0,
                 Type = "Paperback",
                 ISBN = "9012345678",
-                Category = "Non-Fiction"
+                Category = "Non-Fiction",
+                AuthorId = 1,
+                PublisherId = 1,
+                /*Author = new Author()
+                {
+                    Id = 1,
+                    Name = "Dan Heath, Chip, Heath"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 1,
+                    Name = "New York Times"
+                }*/
             },
             new Book
             {
@@ -196,8 +349,20 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
                 CopiesInUse = 1,
                 Type = "Hardcover",
                 ISBN = "0123456789",
-                Category = "Non-Fiction"
-            },
+                Category = "Non-Fiction",
+                AuthorId = 3,
+                PublisherId = 3,
+                /*Author = new Author()
+                {
+                    Id = 3,
+                    Name = "Pam Muñoz Rya"
+                },
+                Publisher = new Publisher()
+                {
+                    Id = 3,
+                    Name = "Scholastic Inc"
+                },*/
+            }
         });
     }
 }
