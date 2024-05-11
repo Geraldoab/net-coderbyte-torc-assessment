@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +14,10 @@ public interface IRepository<TEntity>
     Task<IReadOnlyList<TEntity>> GetAllAsync();
 
     Task<IReadOnlyList<TEntity>> FilterAsync(Expression<Func<TEntity, bool>> predicate);
+
+    IQueryable<TEntity> GetQueryable();
+
+    DbSet<TEntity> GetEntity();
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

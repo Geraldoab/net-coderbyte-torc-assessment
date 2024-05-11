@@ -1,4 +1,6 @@
-﻿namespace BookLibrary.Core.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BookLibrary.Core.Entities;
 
 public class Book
 {
@@ -19,4 +21,14 @@ public class Book
     public string ISBN { get; set; }
 
     public string Category { get; set; }
+
+    [ForeignKey(nameof(Author))]
+    public int AuthorId { get; set; }
+
+    [ForeignKey(nameof(Publisher))]
+    public int PublisherId { get; set; }
+
+    public virtual Author Author { get; set; }
+
+    public virtual Publisher Publisher { get; set; }
 }
