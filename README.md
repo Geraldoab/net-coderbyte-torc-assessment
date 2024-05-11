@@ -13,7 +13,7 @@
 
 ## Extra
 - :white_check_mark: Add Books POST ``` /Books ```
-  
+- :white_check_mark: A Book notification using ```Delegate and Event```  
 ```
 {
   "title": "Sapiens: A Brief History of Humankind",
