@@ -11,6 +11,24 @@
 - :white_check_mark: Unity Tests with XUnit
 - :white_check_mark: Clean Code
 
+## Extra
+- :white_check_mark: Add Books POST ``` /Books ```
+  
+```
+{
+  "title": "Sapiens: A Brief History of Humankind",
+  "firstName": "Yuval",
+  "lastName": "Noah Harari",
+  "type": "Hardcover",
+  "isbn": "1234567891",
+  "category": "Non-fiction",
+  "authorId": 4,
+  "publisherId": 1,
+  "totalCopies": 300,
+  "copiesInUse": 0
+}
+
+```
 ## Sample
 
 ![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/d9008620-c66c-47fc-8160-7ff2343e9fed)
