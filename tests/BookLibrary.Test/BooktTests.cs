@@ -1,10 +1,11 @@
 using AutoMapper;
 using BookLibrary.Api.MappingProfiles;
+using BookLibrary.Application;
 using BookLibrary.Core.Entities;
 using BookLibrary.Core.Interfaces;
-using BookLibrary.Infrastructure.Repositories;
 using FluentAssertions;
 using Moq;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -12,24 +13,30 @@ namespace BookLibrary.Test
 {
     public class BooktTests
     {
+        private BookService _bookService;
+        private Mock<IRepository<Book>> _mockRepository = new Mock<IRepository<Book>>();
+        private BookLibraryDatabaseTestContext _testingContext = new BookLibraryDatabaseTestContext();
+        
         public BooktTests()
         {
+            _testingContext.CreateDatabase();
+            _mockRepository.Setup(s => s.GetEntity()).Returns(_testingContext.Set<Book>());
         }
 
         [Fact]
-        public async Task Update_Succeeds()
+        [DisplayName("Get_all_books_successfully")]
+        public async Task Get_all_books_successfully()
         {
             //Arrange
-            var testingContext = new BookLibraryDatabaseTestContext();
-            testingContext.CreateDatabase();
+            _bookService = new BookService(_mockRepository.Object);
 
-            var repository = new BaseRepository<Book>(testingContext);
-            var mockRepository = new Mock<IRepository<Book>>();
-
-            var mapper = CreateIMapper();
             //Act
+            var bookList = await _bookService.GetAllQueryableFilter();
+
             //Assert
-            testingContext.DisposeDatabase();
+            bookList.Should().NotBeNull();
+            bookList.Succeeded.Should().BeTrue();
+            bookList.Result.Count.Should().BeGreaterThan(0);
         }
 
         protected IMapper CreateIMapper()
