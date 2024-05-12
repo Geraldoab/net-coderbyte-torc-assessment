@@ -23,6 +23,19 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+const string ROYAL_LIBRARY_WEB_APP_POLICY_NAME = "RoyalLibraryWebAppAccess";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: ROYAL_LIBRARY_WEB_APP_POLICY_NAME,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200") // Front-End URL
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddControllers(options => options.Filters.Add(typeof(ErrorResultFilter)));
 
 builder.Services.AddDbContext<BookLibraryDbContext>(options => options.UseInMemoryDatabase("BookLibrary"));
@@ -49,6 +62,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(ROYAL_LIBRARY_WEB_APP_POLICY_NAME);
 app.MapControllers();
 app.UseHttpsRedirection();
 app.Run();
