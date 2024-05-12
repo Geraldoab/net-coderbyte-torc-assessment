@@ -3,7 +3,7 @@
     public enum SearchByEnum
     {
         All,
-        BookTitle,
+        Title,
         Type,
         Category
     }

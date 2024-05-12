@@ -47,11 +47,11 @@ namespace BookLibrary.Application
             if(!string.IsNullOrEmpty(searchValue))
             {
                 if (searchBy == SearchByEnum.Category)
-                    bookQueryable = bookQueryable.Where(w => w.Category == searchValue);
+                    bookQueryable = bookQueryable.Where(w => w.Category.ToLower().Contains(searchValue.ToLower()));
                 else if(searchBy == SearchByEnum.Type)
-                    bookQueryable = bookQueryable.Where(w => w.Type == searchValue);
-                else if (searchBy == SearchByEnum.BookTitle)
-                    bookQueryable = bookQueryable.Where(w => w.Title.Contains(searchValue));
+                    bookQueryable = bookQueryable.Where(w => w.Type.ToLower().Contains(searchValue.ToLower()));
+                else if (searchBy == SearchByEnum.Title)
+                    bookQueryable = bookQueryable.Where(w => w.Title.ToLower().Contains(searchValue.ToLower()));
             }
 
             cancellationToken.ThrowIfCancellationRequested();
