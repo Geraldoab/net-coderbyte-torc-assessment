@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\BookLibrary.Application\BookLibrary.Application.csproj" />
+      <ProjectReference Include="..\BookLibrary.Application\BookLibrary.Application.csproj" />
       <ProjectReference Include="..\BookLibrary.Core\BookLibrary.Core.csproj" />
       <ProjectReference Include="..\BookLibrary.Infrastructure\BookLibrary.Infrastructure.csproj" />
     </ItemGroup>
