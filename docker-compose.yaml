@@ -1,0 +1,23 @@
+services:
+  royal-library-web-app:
+    container_name: royal-library-web-app
+    build: .
+    image: geraldoab/royal-library-web-app:1.0
+    ports:
+      - 4200:4200
+    networks:
+      - internalnet
+
+  royal-library-api:
+    container_name: royal-library-api
+    image: geraldoab/royal-library-api:1.0
+    ports:
+      - 10000:8080
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge
