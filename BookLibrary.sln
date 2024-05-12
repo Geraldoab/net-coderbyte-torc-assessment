@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Test", "tests\B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Api", "src\BookLibrary.Api\BookLibrary.Api.csproj", "{0D7E4458-E175-4501-A546-09F34512D954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Application", "BookLibrary.Application\BookLibrary.Application.csproj", "{319822A3-E19F-404B-BEAC-52AF50B84682}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Application", "src\BookLibrary.Application\BookLibrary.Application.csproj", "{319822A3-E19F-404B-BEAC-52AF50B84682}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

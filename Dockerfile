@@ -8,6 +8,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/BookLibrary.Api/BookLibrary.Api.csproj", "src/BookLibrary.Api/"]
+COPY ["src/BookLibrary.Application/BookLibrary.Application.csproj", "src/BookLibrary.Application/"]
+COPY ["src/BookLibrary.Core/BookLibrary.Core.csproj", "src/BookLibrary.Core/"]
+COPY ["src/BookLibrary.Infrastructure/BookLibrary.Infrastructure.csproj", "src/BookLibrary.Infrastructure/"]
+
 RUN dotnet restore "src/BookLibrary.Api/BookLibrary.Api.csproj"
 COPY . .
 WORKDIR "/src/src/BookLibrary.Api"

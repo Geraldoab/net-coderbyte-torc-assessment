@@ -48,21 +48,25 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    using (var context = scope.ServiceProvider.GetRequiredService<BookLibraryDbContext>())
+    {
+        context.Database.EnsureCreated();
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    using (var scope = app.Services.CreateScope())
-    {
-        using (var context = scope.ServiceProvider.GetRequiredService<BookLibraryDbContext>())
-        {
-            context.Database.EnsureCreated();
-        }
-    }
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseHttpsRedirection();
 }
 
 app.UseCors(ROYAL_LIBRARY_WEB_APP_POLICY_NAME);
 app.MapControllers();
-app.UseHttpsRedirection();
 app.Run();
