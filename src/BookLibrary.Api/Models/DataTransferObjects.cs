@@ -22,4 +22,8 @@ public record BookDataTransferObject(
     [Required] string Category,
     [Required] int AuthorId,
     [Required] int PublisherId,
-    int TotalCopies = 0);
+    int TotalCopies = 0,
+    int id = 0);
+
+public record AuthorDataTransferObject([Required] int Id, [Required] string Name);
+public record PublisherDataTransferObject([Required] int Id, [Required] string Name);

@@ -25,5 +25,9 @@ public interface IRepository<TEntity>
 
     Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken);
 
+    Task<TEntity> EditAsync(object id, TEntity entity, CancellationToken cancellationToken);
+
+    Task<TEntity> RemoveByIdAsync(object id, CancellationToken cancellationToken);
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

@@ -91,5 +91,33 @@ namespace BookLibrary.Application
 
             return OperationResult<Book>.Success(addedBook);
         }
+
+        public async Task<OperationResult<Book>> GetByIdAsync(int id, CancellationToken cancellationToken)
+        {
+            var book = await _repository.GetByIdAsync(id, cancellationToken);
+            if (book is null)
+                return OperationResult<Book>.NotFound(string.Format(CommonMessage.BOOK_NOT_FOUND, id));
+
+            return OperationResult<Book>.Success(book);
+        }
+
+        public async Task<OperationResult<Book>> EditAsync(Book book, CancellationToken cancellationToken)
+        {
+            var result = await _repository.EditAsync(book.Id, book, cancellationToken);
+            await _repository.SaveChangesAsync(cancellationToken);
+
+            return OperationResult<Book>.Success(result);   
+        }
+
+        public async Task<OperationResult<Book>> DeleteAsync(int id, CancellationToken cancellationToken)
+        {
+            var book = await _repository.RemoveByIdAsync(id, cancellationToken);
+            if (book is null)
+                return OperationResult<Book>.NotFound(string.Format(CommonMessage.BOOK_NOT_FOUND, id));
+
+            await _repository.SaveChangesAsync(cancellationToken);
+
+            return OperationResult<Book>.Success(book);
+        }
     }
 }

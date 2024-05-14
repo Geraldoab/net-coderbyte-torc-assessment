@@ -54,5 +54,28 @@ public class BaseRepository<TEntity>(BookLibraryDbContext context)
         return entity;
     }
 
+    public async Task<TEntity> EditAsync(object id, TEntity entity, CancellationToken cancellationToken)
+    {
+        if (entity == null)
+            return null;
+
+        TEntity? selectedEntity = await GetByIdAsync(id, cancellationToken);
+
+        if (selectedEntity != null)
+            context.Entry(selectedEntity).CurrentValues.SetValues(entity);
+
+        return selectedEntity;
+    }
+
+    public async Task<TEntity> RemoveByIdAsync(object id, CancellationToken cancellationToken)
+    {
+        var selectedEntity = await GetByIdAsync(id, cancellationToken).ConfigureAwait(false);
+
+        if (selectedEntity != null)
+            context.Set<TEntity>().Remove(selectedEntity);
+
+        return selectedEntity;
+    }
+
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken) => await context.SaveChangesAsync(cancellationToken);
 }
