@@ -49,4 +49,5 @@
 
 ## Sample
 
-![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/d9008620-c66c-47fc-8160-7ff2343e9fed)
+![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/15bf7d0d-3115-4b27-8bc8-e0a22fc83b38)
+
