@@ -79,6 +79,24 @@ namespace BookLibrary.Core.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The book is required..
+        /// </summary>
+        public static string BOOK_IS_REQUIRED {
+            get {
+                return ResourceManager.GetString("BOOK_IS_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The book with id {0} not found..
+        /// </summary>
+        public static string BOOK_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("BOOK_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Publisher with id {0} not found..
         /// </summary>
         public static string PUBLISHER_NOT_FOUND {
