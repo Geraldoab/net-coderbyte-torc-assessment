@@ -45,8 +45,7 @@
 
 - :white_check_mark: Add a **Front-End** app built with **Angular 17+** and **Typescript**: https://github.com/Geraldoab/royal-library-web-app
   
-![r-library1](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/972fd085-9a92-4ee7-bb98-a58c08eed68e)
-
+![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/b970e4d7-90c7-4b77-99e8-1635dd89f3cb)
 
 ## Sample
 
