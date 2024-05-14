@@ -17,6 +17,9 @@
 
 - :white_check_mark: A Book notification using ```Delegate and Event```
 - :white_check_mark: Add Books POST ``` /Books ```
+  
+![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/d5fb58c7-bb0d-4d13-bfb7-7c2910bd4395)
+
 ```
 {
   "title": "Sapiens: A Brief History of Humankind",
