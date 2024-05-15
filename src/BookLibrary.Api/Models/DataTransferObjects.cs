@@ -4,6 +4,7 @@ namespace BookLibrary.Api.Models;
 
 public class BookSearchDataTransferObject
 {
+    public int Id { get; set; }
     public string? BookTitle { get; set; }
     public string? Publisher { get; set; }
     public string? Authors { get; set; }

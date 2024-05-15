@@ -9,6 +9,7 @@ public class DataTransferObjectsMappingProfile : Profile
     public DataTransferObjectsMappingProfile()
     {
         CreateMap<Book, BookSearchDataTransferObject>()
+            .ForMember(p => p.Id, m => m.MapFrom(s => s.Id))
             .ForMember(p => p.BookTitle, m => m.MapFrom(s => s.Title))
             .ForMember(p => p.Publisher, m => m.MapFrom(s => s.Publisher.Name))
             .ForMember(p => p.Authors, m => m.MapFrom(s => s.Author.Name))

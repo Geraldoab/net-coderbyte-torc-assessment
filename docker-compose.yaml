@@ -10,7 +10,7 @@ services:
 
   royal-library-api:
     container_name: royal-library-api
-    image: geraldoab/royal-library-api:1.1
+    image: geraldoab/royal-library-api:1.2
     ports:
       - 10000:8080
     environment:

@@ -61,6 +61,15 @@ namespace BookLibrary.Core.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The author is required..
+        /// </summary>
+        public static string AUTHOR_IS_REQUIRED {
+            get {
+                return ResourceManager.GetString("AUTHOR_IS_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Author with id {0} not found..
         /// </summary>
         public static string AUTHOR_NOT_FOUND {
@@ -97,11 +106,29 @@ namespace BookLibrary.Core.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The publisher is required..
+        /// </summary>
+        public static string PUBLISHER_IS_REQUIRED {
+            get {
+                return ResourceManager.GetString("PUBLISHER_IS_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Publisher with id {0} not found..
         /// </summary>
         public static string PUBLISHER_NOT_FOUND {
             get {
                 return ResourceManager.GetString("PUBLISHER_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record with id {0} not found..
+        /// </summary>
+        public static string RECORD_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("RECORD_NOT_FOUND", resourceCulture);
             }
         }
     }

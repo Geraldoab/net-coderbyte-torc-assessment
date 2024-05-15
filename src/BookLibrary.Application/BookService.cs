@@ -58,6 +58,7 @@ namespace BookLibrary.Application
 
             var books = await bookQueryable.Select(s => new Book
                 {
+                    Id = s.Id,
                     ISBN = s.ISBN,
                     Category = s.Category,
                     CopiesInUse = s.CopiesInUse,
