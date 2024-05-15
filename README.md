@@ -17,6 +17,8 @@
 
 - :white_check_mark: A Book notification using ```Delegate and Event```
 - :white_check_mark: Add Books POST ``` /Books ```
+- :white_check_mark: Add Authors CRUD
+- :white_check_mark: Add Publishers CRUD
   
 ![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/d5fb58c7-bb0d-4d13-bfb7-7c2910bd4395)
 
@@ -49,5 +51,6 @@
 
 ## Sample
 
-![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/15bf7d0d-3115-4b27-8bc8-e0a22fc83b38)
+![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/402443f0-06c4-42b5-8bd3-46ede3cb7712)
+
 
