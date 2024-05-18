@@ -31,7 +31,7 @@ namespace BookLibrary.Application
             BookAddedNotification += _bookNotification.OnBookAdded;
         }
 
-        public async Task<OperationResult<IReadOnlyList<Book>>> GetAllAsync(SearchByEnum searchBy, string? searchValue, CancellationToken cancellationToken)
+        async Task<OperationResult<IReadOnlyList<Book>>> IBookService.GetAllAsync(SearchByEnum searchBy, string? searchValue, CancellationToken cancellationToken)
         {
             /* 
              * We need be careful with eager loading of related data. It can be improved also using Dapper.
@@ -72,7 +72,7 @@ namespace BookLibrary.Application
             return OperationResult<IReadOnlyList<Book>>.Success(books);
         }
 
-        public async Task<OperationResult<Book>> AddAsync(Book newBook, CancellationToken cancellationToken)
+        async Task<OperationResult<Book>> IBookService.AddAsync(Book newBook, CancellationToken cancellationToken)
         {
             if((await _repository.FindAsync(w=> w.Title == newBook.Title, cancellationToken)) is not null)
                 return OperationResult<Book>.Error(ErrorCode.BadRequest, string.Format(CommonMessage.BOOK_ALREADY_ADDED, newBook.Title));
@@ -93,7 +93,7 @@ namespace BookLibrary.Application
             return OperationResult<Book>.Success(addedBook);
         }
 
-        public async Task<OperationResult<Book>> GetByIdAsync(int id, CancellationToken cancellationToken)
+        async Task<OperationResult<Book>> IBookService.GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             var book = await _repository.GetByIdAsync(id, cancellationToken);
             if (book is null)
@@ -102,7 +102,7 @@ namespace BookLibrary.Application
             return OperationResult<Book>.Success(book);
         }
 
-        public async Task<OperationResult<Book>> EditAsync(Book book, CancellationToken cancellationToken)
+        async Task<OperationResult<Book>> IBookService.EditAsync(Book book, CancellationToken cancellationToken)
         {
             var result = await _repository.EditAsync(book.Id, book, cancellationToken);
             await _repository.SaveChangesAsync(cancellationToken);
@@ -110,7 +110,7 @@ namespace BookLibrary.Application
             return OperationResult<Book>.Success(result);   
         }
 
-        public async Task<OperationResult<Book>> DeleteAsync(int id, CancellationToken cancellationToken)
+        async Task<OperationResult<Book>> IBookService.DeleteAsync(int id, CancellationToken cancellationToken)
         {
             var book = await _repository.RemoveByIdAsync(id, cancellationToken);
             if (book is null)

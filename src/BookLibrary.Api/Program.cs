@@ -38,11 +38,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers(options => options.Filters.Add(typeof(ErrorResultFilter)));
 
-builder.Services.AddDbContext<BookLibraryDbContext>(options => options.UseInMemoryDatabase("BookLibrary"));
-builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IBookNotification, BookNotification>();
-builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-builder.Services.AddScoped(typeof(IService<>), typeof(BaseService<>));
+builder.Services.RegisterInfraDependencies();
+builder.Services.RegisterApplicationDependencies();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
