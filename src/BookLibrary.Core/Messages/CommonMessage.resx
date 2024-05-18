@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AUTHOR_ALREADY_ADDED" xml:space="preserve">
+    <value>The author {0} is already added.</value>
+  </data>
   <data name="AUTHOR_IS_REQUIRED" xml:space="preserve">
     <value>The author is required.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="BOOK_NOT_FOUND" xml:space="preserve">
     <value>The book with id {0} not found.</value>
+  </data>
+  <data name="PUBLISHER_ALREADY_ADDED" xml:space="preserve">
+    <value>The publisher {0} is already added.</value>
   </data>
   <data name="PUBLISHER_IS_REQUIRED" xml:space="preserve">
     <value>The publisher is required.</value>

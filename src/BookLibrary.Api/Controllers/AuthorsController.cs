@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using BookLibrary.Api.Models;
 using BookLibrary.Api.Utils;
+using BookLibrary.Application.Interfaces;
 using BookLibrary.Core.Entities;
-using BookLibrary.Core.Interfaces;
 using BookLibrary.Core.Messages;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +10,7 @@ namespace BookLibrary.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorsController(IService<Author> service, IMapper mapper) 
+    public class AuthorsController(IAuthorService service, IMapper mapper) 
         : BookLibraryBaseController(mapper)
     {
         /// <summary>

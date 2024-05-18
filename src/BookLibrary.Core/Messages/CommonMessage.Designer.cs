@@ -61,6 +61,15 @@ namespace BookLibrary.Core.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The author {0} is already added..
+        /// </summary>
+        public static string AUTHOR_ALREADY_ADDED {
+            get {
+                return ResourceManager.GetString("AUTHOR_ALREADY_ADDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The author is required..
         /// </summary>
         public static string AUTHOR_IS_REQUIRED {
@@ -102,6 +111,15 @@ namespace BookLibrary.Core.Messages {
         public static string BOOK_NOT_FOUND {
             get {
                 return ResourceManager.GetString("BOOK_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The publisher {0} is already added..
+        /// </summary>
+        public static string PUBLISHER_ALREADY_ADDED {
+            get {
+                return ResourceManager.GetString("PUBLISHER_ALREADY_ADDED", resourceCulture);
             }
         }
         

@@ -11,8 +11,7 @@ namespace BookLibrary.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class BooksController(IBookService bookService,
-    IMapper mapper)
+public class BooksController(IBookService bookService, IMapper mapper)
     : BookLibraryBaseController(mapper)
 {
     /// <summary>
