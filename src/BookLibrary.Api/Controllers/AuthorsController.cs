@@ -18,7 +18,6 @@ namespace BookLibrary.Api.Controllers
         /// </summary>
         /// <returns>A list of authors</returns>
         [HttpGet]
-        [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 20)]
         [ProducesResponseType(typeof(IEnumerable<AuthorDataTransferObject>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorResponseActionResult))]
         public async Task<IActionResult> GetAll()
@@ -34,7 +33,6 @@ namespace BookLibrary.Api.Controllers
         /// <param name="cancellationToken">The cancellation token for the request</param>
         /// <returns>The Author</returns>
         [HttpGet("{id:int}")]
-        [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 20)]
         [ProducesResponseType(typeof(AuthorDataTransferObject), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(AuthorDataTransferObject), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorResponseActionResult))]
