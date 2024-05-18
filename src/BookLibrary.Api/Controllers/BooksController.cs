@@ -22,7 +22,6 @@ public class BooksController(IBookService bookService,
     /// <param name="searchValue">The filter value</param>
     /// <returns>A list of books</returns>
     [HttpGet]
-    [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 10)]
     [ProducesResponseType(typeof(IEnumerable<BookSearchDataTransferObject>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorResponseActionResult))]
     public async Task<IActionResult> GetAll(SearchByEnum searchBy, string? searchValue, CancellationToken cancellationToken)
@@ -38,7 +37,6 @@ public class BooksController(IBookService bookService,
     /// <param name="cancellationToken">The cancellation token for the request</param>
     /// <returns>The book</returns>
     [HttpGet("{id:int}")]
-    [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 20)]
     [ProducesResponseType(typeof(BookSearchDataTransferObject), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(BookSearchDataTransferObject), StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorResponseActionResult))]
