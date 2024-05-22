@@ -15,6 +15,7 @@
   ![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/887f1b1e-f5c9-4ebb-95b5-60e6e274cab5)
   ![image](https://github.com/Geraldoab/net-coderbyte-torc-assessment/assets/3846304/c058b85b-06a2-499a-a1fe-cf6471b2a2d0)
 
+- :white_check_mark: Add pagination to the books list
 - :white_check_mark: A Book notification using ```Delegate and Event```
 - :white_check_mark: Add Books POST ``` /Books ```
 - :white_check_mark: Add Authors CRUD
