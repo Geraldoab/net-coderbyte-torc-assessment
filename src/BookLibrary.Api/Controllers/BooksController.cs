@@ -23,9 +23,9 @@ public class BooksController(IBookService bookService, IMapper mapper)
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<BookSearchDataTransferObject>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorResponseActionResult))]
-    public async Task<IActionResult> GetAll(SearchByEnum searchBy, string? searchValue, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAll(SearchByEnum searchBy, string? searchValue, int pageNumber, int pageSize, CancellationToken cancellationToken)
     {
-        var books = await bookService.GetAllAsync(searchBy, searchValue, cancellationToken);
+        var books = await bookService.GetAllAsync(searchBy, searchValue, pageNumber, pageSize, cancellationToken);
         return MapResultToDataTransferObject<IReadOnlyList<Book>, IReadOnlyList<BookSearchDataTransferObject>>(books);
     }
 

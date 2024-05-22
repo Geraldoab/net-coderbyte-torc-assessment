@@ -31,7 +31,8 @@ namespace BookLibrary.Application
             BookAddedNotification += _bookNotification.OnBookAdded;
         }
 
-        async Task<OperationResult<IReadOnlyList<Book>>> IBookService.GetAllAsync(SearchByEnum searchBy, string? searchValue, CancellationToken cancellationToken)
+        async Task<OperationResult<IReadOnlyList<Book>>> IBookService.GetAllAsync(SearchByEnum searchBy, string? searchValue, int pageNumber, 
+            int pageSize, CancellationToken cancellationToken)
         {
             /* 
              * We need be careful with eager loading of related data. It can be improved also using Dapper.
@@ -56,6 +57,12 @@ namespace BookLibrary.Application
 
             cancellationToken.ThrowIfCancellationRequested();
 
+            if(pageNumber <=0)
+                pageNumber = 1;
+
+            if(pageSize <= 0)
+                pageSize = 10;
+
             var books = await bookQueryable.Select(s => new Book
                 {
                     Id = s.Id,
@@ -67,8 +74,17 @@ namespace BookLibrary.Application
                     Type = s.Type,
                     Author = s.Author,
                     Publisher = s.Publisher,
-                }).ToListAsync(cancellationToken);
-         
+                })
+                .Skip((pageNumber -1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync(cancellationToken);
+
+            if (books.Count > 0)
+            {
+                var totalBooks = await bookQueryable.CountAsync(cancellationToken);
+                books[0].TotalItemCount = totalBooks;
+            }
+
             return OperationResult<IReadOnlyList<Book>>.Success(books);
         }
 
