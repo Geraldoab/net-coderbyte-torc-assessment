@@ -31,4 +31,7 @@ public class Book
     public virtual Author Author { get; set; }
 
     public virtual Publisher Publisher { get; set; }
+
+    [NotMapped]
+    public int TotalItemCount { get; set; } = 0;
 }

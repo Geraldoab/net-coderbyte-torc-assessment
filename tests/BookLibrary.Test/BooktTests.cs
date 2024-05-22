@@ -36,7 +36,7 @@ namespace BookLibrary.Test
             _bookService = new BookService(_mockRepository.Object, _authorMockRepository.Object, _publisherMockRepository.Object, new BookNotification());
 
             //Act
-            var bookList = await ((Application.Interfaces.IBookService)_bookService).GetAllAsync(SearchByEnum.All, null, CancellationToken.None);
+            var bookList = await ((Application.Interfaces.IBookService)_bookService).GetAllAsync(SearchByEnum.All, null, 1, 10, CancellationToken.None);
 
             //Assert
             bookList.Should().NotBeNull();
