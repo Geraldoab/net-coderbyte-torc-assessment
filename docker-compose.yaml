@@ -2,7 +2,7 @@ services:
   royal-library-web-app:
     container_name: royal-library-web-app
     build: .
-    image: geraldoab/royal-library-web-app:1.4
+    image: geraldoab/royal-library-web-app:1.5
     ports:
       - 4200:4200
     networks:

@@ -11,11 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Infrastructure"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9E1CDC38-F9E9-480C-A6D8-BB03736700AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Test", "tests\BookLibrary.Test\BookLibrary.Test.csproj", "{805EDD4D-EF82-4CA8-B2F0-FBAAB172881C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Test", "tests\BookLibrary.Test\BookLibrary.Test.csproj", "{805EDD4D-EF82-4CA8-B2F0-FBAAB172881C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Api", "src\BookLibrary.Api\BookLibrary.Api.csproj", "{0D7E4458-E175-4501-A546-09F34512D954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Application", "src\BookLibrary.Application\BookLibrary.Application.csproj", "{319822A3-E19F-404B-BEAC-52AF50B84682}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Application", "src\BookLibrary.Application\BookLibrary.Application.csproj", "{319822A3-E19F-404B-BEAC-52AF50B84682}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
